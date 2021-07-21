@@ -1,0 +1,4 @@
+session.data.json
+node_modules/
+.node-persist/
+logs/
