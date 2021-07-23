@@ -5,7 +5,7 @@ module.exports = {
   imgToSticker: async (client, message) => {
     if (message?.caption === "!sticker" && message.mimetype) {
       try {
-        const mediaData = await wa.decryptMedia(message);
+        const mediaData = await decryptMedia(message);
         const imageBase64 = `data:${
           message.mimetype
         };base64,${mediaData.toString("base64")}`;
