@@ -7,4 +7,9 @@ module.exports = {
       }
     }
   },
+  calabocaPalestrinha: async (client, message) => {
+    if (message?.body?.startsWith("!calaboca")) {
+      await client.sendText(message.from, "Calaboca Palestrinha !");
+    }
+  },
 };
