@@ -1,5 +1,5 @@
 const wa = require("@open-wa/wa-automate");
-const { jaoPimpao } = require("./random");
+const { jaoPimpao, calabocaPalestrinha } = require("./random");
 const { imgToSticker } = require("./sticker");
 const { searchTorrent } = require("./torrent");
 const { commands } = require("./utils");
@@ -12,5 +12,6 @@ function start(client) {
     jaoPimpao(client, message);
     imgToSticker(client, message);
     searchTorrent(client, message);
+    calabocaPalestrinha(client, message);
   });
 }
