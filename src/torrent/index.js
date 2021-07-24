@@ -10,7 +10,7 @@ module.exports = {
       const createResponseMessage = (torrent) =>
         `${torrent?.title}\n\n${torrent?.magnet}`;
 
-      client.sendText(message.from, createResponseMessage(torrents[0]));
+      client.sendText(message.to, createResponseMessage(torrents[0]));
     }
   },
 };
