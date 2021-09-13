@@ -4,6 +4,7 @@ const {
   imgToSticker,
   saveStickersAsWebp,
   sendGifAsSticker,
+  meImgToSticker,
 } = require("./sticker");
 const { searchTorrent } = require("./torrent");
 const { commands } = require("./utils");
@@ -11,7 +12,7 @@ const { commands } = require("./utils");
 wa.create().then((client) => start(client));
 
 function start(client) {
-  client.onAnyMessage(async (message) => {
+  client.onMessage(async (message) => {
     commands(client, message);
     jaoPimpao(client, message);
     imgToSticker(client, message);

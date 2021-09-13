@@ -9,7 +9,21 @@ module.exports = {
           message.mimetype
         };base64,${mediaData.toString("base64")}`;
 
-        client.sendImageAsSticker(message.to, imageBase64);
+        client.sendImageAsSticker(message.from, imageBase64);
+      } catch (err) {
+        throw new Error(err.message);
+      }
+    }
+  },
+  meImgToSticker: async (client, message) => {
+    if (message?.caption === "!sticker" && message.mimetype) {
+      try {
+        const mediaData = await decryptMedia(message);
+        const imageBase64 = `data:${
+          message.mimetype
+        };base64,${mediaData.toString("base64")}`;
+
+        client.sendImageAsSticker(message.from, imageBase64);
       } catch (err) {
         throw new Error(err.message);
       }
@@ -31,7 +45,7 @@ module.exports = {
     if (message?.body?.startsWith("!gif")) {
       const gifLink = message.body.split("!gif ")[1];
 
-      await client.sendGiphyAsSticker(message.to, gifLink);
+      await client.sendGiphyAsSticker(message.from, gifLink);
     }
   },
 };

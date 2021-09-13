@@ -2,7 +2,7 @@ session.data.json
 node_modules/
 .node-persist/
 logs/
-
+stickers/*
 # managed by open-wa
 **.data.json
 **.node-persist**

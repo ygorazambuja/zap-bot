@@ -8,5 +8,6 @@
 ## Ainda faltam
 
 [ ] - Stickers animados
+[ ] - Criar variavel de ambiente para setar quando eu uso(to) ou pessoas(from)
 
 - Conforme vou lembrando vou adicionando novas feats
