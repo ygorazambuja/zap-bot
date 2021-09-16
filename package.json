@@ -15,10 +15,12 @@
     "torrent-search-api": "^2.1.4"
   },
   "scripts": {
-    "dev": "nodemon src",
+    "dev": "ts-node-dev --respawn --transpile-only ./src",
     "start": "node src"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.3"
   }
 }
