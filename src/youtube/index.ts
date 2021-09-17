@@ -1,6 +1,7 @@
 import { Client, Message } from "@open-wa/wa-automate";
 import ytdl from "ytdl-core";
 import { createWriteStream, unlinkSync } from "fs";
+import { convertMp4ToMp3UsingFFMPEG } from "../utils/ffmpeg";
 
 export async function handleDownloadVideo(client: Client, message: Message) {
   if (message?.body?.startsWith("!video")) {
@@ -32,15 +33,11 @@ export async function handleDownloadMp3(client: Client, message: Message) {
       const videoInfo = await getVideoInfo(url);
       client.sendText(message.chatId, "Baixando audio: " + videoInfo.title);
       const timestamp = await downloadVideoAsMp3(url);
-      await client.sendPtt(message.chatId, `${timestamp}.mp3`, message.id);
-      await client.sendFile(
-        message.chatId,
-        `${timestamp}.mp3`,
-        `${timestamp}.mp3`,
-        ""
-      );
+      await convertMp4ToMp3UsingFFMPEG(`${timestamp}.mp4`);
+
       await client.sendAudio(message.chatId, `${timestamp}.mp3`, message.id);
       unlinkSync(`${timestamp}.mp3`);
+      unlinkSync(`${timestamp}.mp4`);
     } catch (error) {
       console.error(error);
     }
@@ -73,7 +70,7 @@ async function downloadVideoAsMp3(url: string) {
       filter: "audioonly",
       quality: "highestaudio",
     });
-    const file = createWriteStream(`${timestamp}.mp3`);
+    const file = createWriteStream(`${timestamp}.mp4`);
 
     audio.pipe(file);
     audio.on("end", () => {
