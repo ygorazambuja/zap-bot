@@ -8,10 +8,10 @@
 - [x] - Baixar videos do youtube
 - [x] - Baixar só o MP3
 - [x] - Criar variavel de ambiente para setar quando eu uso(to) ou pessoas(from) - Matei passando tudo pro chatId invés do from
-
+- [X] - Descobrir porque iPhones não abrem o audio
 ## Ainda faltam
 
-- [ ] - Descobrir porque iPhones não abrem o audio
+
 - [ ] - Integração com Google Cloud Speech to Text
 
 - Conforme vou lembrando vou adicionando novas feats
