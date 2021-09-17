@@ -10,15 +10,37 @@ export async function handleDownloadVideo(client: Client, message: Message) {
       const url = message.body.split(" ")[1];
 
       const videoInfo = await getVideoInfo(url);
-      client.sendText(message.from, "Baixando video: " + videoInfo.title);
+      client.sendText(message.chatId, "Baixando video: " + videoInfo.title);
       const timestamp = await downloadVideoAsMp4(url);
       await client.sendFile(
-        message.from,
+        message.chatId,
         `${timestamp}.mp4`,
         `${timestamp}.mp4`,
         `${timestamp}.mp4`
       );
       unlinkSync(`${timestamp}.mp4`);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+
+export async function handleDownloadMp3(client: Client, message: Message) {
+  if (message?.body?.startsWith("!audio")) {
+    try {
+      const url = message.body.split(" ")[1];
+      const videoInfo = await getVideoInfo(url);
+      client.sendText(message.chatId, "Baixando audio: " + videoInfo.title);
+      const timestamp = await downloadVideoAsMp3(url);
+      await client.sendPtt(message.chatId, `${timestamp}.mp3`, message.id);
+      await client.sendFile(
+        message.chatId,
+        `${timestamp}.mp3`,
+        `${timestamp}.mp3`,
+        ""
+      );
+      await client.sendAudio(message.chatId, `${timestamp}.mp3`, message.id);
+      unlinkSync(`${timestamp}.mp3`);
     } catch (error) {
       console.error(error);
     }
@@ -41,6 +63,25 @@ async function downloadVideoAsMp4(url: string) {
     });
 
     video.on("error", reject);
+  });
+}
+
+async function downloadVideoAsMp3(url: string) {
+  return new Promise<number>((resolve, reject) => {
+    const timestamp = new Date().getTime();
+    const audio = ytdl(url, {
+      filter: "audioonly",
+      quality: "highestaudio",
+    });
+    const file = createWriteStream(`${timestamp}.mp3`);
+
+    audio.pipe(file);
+    audio.on("end", () => {
+      console.log("[*] Download finished");
+      resolve(timestamp);
+    });
+
+    audio.on("error", reject);
   });
 }
 
