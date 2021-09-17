@@ -15,7 +15,7 @@ export async function imgToSticker(client: Client, message: Message) {
         keepScale: true,
       });
     } catch (err) {
-      throw new Error(err.message);
+      throw new Error("Error");
     }
   }
 }

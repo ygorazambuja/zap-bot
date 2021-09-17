@@ -12,11 +12,12 @@
   "dependencies": {
     "@open-wa/wa-automate": "^4.11.1",
     "mime-types": "^2.1.31",
-    "torrent-search-api": "^2.1.4"
+    "torrent-search-api": "^2.1.4",
+    "ytdl-core": "^4.9.1"
   },
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only ./src",
-    "start": "node src"
+    "start": "ts-node-dev ./src"
   },
   "devDependencies": {
     "nodemon": "^2.0.12",

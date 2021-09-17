@@ -4,9 +4,11 @@ import { imgToSticker, saveStickersAsWebp, sendGifAsSticker } from "./sticker";
 import { searchTorrent } from "./torrent";
 
 import { commands } from "./utils";
+import { handleDownloadVideo } from "./youtube";
 
 create({
   hostNotificationLang: NotificationLanguage.PTBR,
+  useChrome: true,
 }).then((client) => start(client));
 
 function start(client: Client) {
@@ -19,5 +21,6 @@ function start(client: Client) {
     paixaoGod(client, message);
     saveStickersAsWebp(client, message);
     sendGifAsSticker(client, message);
+    handleDownloadVideo(client, message);
   });
 }
