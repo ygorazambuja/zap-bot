@@ -13,7 +13,7 @@ create({
 }).then((client) => start(client));
 
 function start(client: Client) {
-  client.onMessage(async (message) => {
+  client.onAnyMessage(async (message) => {
     commands(client, message);
     jaoPimpao(client, message);
     imgToSticker(client, message);
@@ -22,8 +22,6 @@ function start(client: Client) {
     paixaoGod(client, message);
     saveStickersAsWebp(client, message);
     sendGifAsSticker(client, message);
-  });
-  client.onAnyMessage(async (message) => {
     handleDownloadVideo(client, message);
     handleDownloadMp3(client, message);
   });

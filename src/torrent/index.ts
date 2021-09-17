@@ -12,6 +12,6 @@ export async function searchTorrent(client: Client, message: Message) {
     const createResponseMessage = (torrent) =>
       `${torrent?.title}\n\n${torrent?.magnet}`;
 
-    client.sendText(message.from, createResponseMessage(torrents[0]));
+    client.sendText(message.chatId, createResponseMessage(torrents[0]));
   }
 }

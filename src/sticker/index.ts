@@ -9,7 +9,7 @@ export async function imgToSticker(client: Client, message: Message) {
         "base64"
       )}`;
 
-      client.sendImageAsSticker(message.from, imageBase64, {
+      client.sendImageAsSticker(message.chatId, imageBase64, {
         author: "ybot",
         pack: "ybot",
         keepScale: true,
@@ -38,7 +38,7 @@ export async function sendGifAsSticker(client: Client, message: Message) {
     if (message.mimetype === "video/mp4") {
       try {
         const decripted = await decryptMedia(message);
-        client.sendMp4AsSticker(message.from, decripted, { crop: false });
+        client.sendMp4AsSticker(message.chatId, decripted, { crop: false });
       } catch (error) {
         console.error(error);
       }
