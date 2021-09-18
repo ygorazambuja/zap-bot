@@ -11,4 +11,13 @@ export async function convertMp4ToMp3UsingFFMPEG(mp4Path: string) {
   });
 }
 
-convertMp4ToMp3UsingFFMPEG("video.mp4");
+export async function convertOpusToWavUsingFFMPEG(opusPath: string) {
+  return new Promise<void>((resolve, reject) => {
+    const wavPath = opusPath.replace(".opus", ".wav");
+    const command = `ffmpeg -i ${opusPath} ${wavPath}`;
+    const spawned = spawn("bash", ["-c", command]);
+
+    spawned.on("close", () => resolve());
+    spawned.on("error", (err) => reject());
+  });
+}
