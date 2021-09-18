@@ -1,6 +1,8 @@
 import { create, Client, NotificationLanguage } from "@open-wa/wa-automate";
 import { jaoPimpao, calabocaPalestrinha, paixaoGod } from "./random";
+import { handleAudioTranscription } from "./speechToText";
 import { imgToSticker, saveStickersAsWebp, sendGifAsSticker } from "./sticker";
+import { handledTextToSpeech } from "./textToSpeech";
 import { searchTorrent } from "./torrent";
 
 import { commands } from "./utils";
@@ -9,7 +11,6 @@ import { handleDownloadMp3, handleDownloadVideo } from "./youtube";
 create({
   hostNotificationLang: NotificationLanguage.PTBR,
   useChrome: true,
-  headless: false,
 }).then((client) => start(client));
 
 function start(client: Client) {
@@ -24,5 +25,7 @@ function start(client: Client) {
     sendGifAsSticker(client, message);
     handleDownloadVideo(client, message);
     handleDownloadMp3(client, message);
+    handleAudioTranscription(client, message);
+    handledTextToSpeech(client, message);
   });
 }
