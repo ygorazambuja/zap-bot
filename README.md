@@ -18,17 +18,28 @@
 ---
 
 ### Comandos: 
->**!comandos**: lista de comandos disponíveis 
+**!comandos**: lista de comandos disponíveis 
+
 **!joao X**: spama X vezes 'João Gordo Nojento !'	 (No maximo de 10 spam porque os amigos não sabem brincar)
+
 **!sticker** na legenda da foto para converter a imagem em sticker
+
 **!torrent** busca: busca qualquer coisa de torrent *(teste)*
+
 **!calaboca**: manda o Tchesco ficar quieto
+
 **!paixao**: manda um sticker do paixão
+
 **!gif** url: converte uma gif da internet para sticker animado
+
 **!gif** na legenda do Gif: converte uma gif da internet para sticker animado
+
 **!audio** youtubeLink: converte videos do youtube para MP3
+
 **!video** youtubeLink: baixa e envia video do YouTube
+
 **!sousurdo** como resposta ao Audio para Transformar em Texto
+
 **!naoseiler** como resposta ao Texto para Transformar em Audio
 
 ---
