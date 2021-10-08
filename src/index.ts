@@ -1,4 +1,5 @@
 import { create, Client, NotificationLanguage } from "@open-wa/wa-automate";
+import { Draco } from "./features/draco";
 import { jaoPimpao, calabocaPalestrinha, paixaoGod } from "./random";
 import { handleAudioTranscription } from "./speechToText";
 import { imgToSticker, saveStickersAsWebp, sendGifAsSticker } from "./sticker";
@@ -27,5 +28,7 @@ function start(client: Client) {
     handleDownloadMp3(client, message);
     handleAudioTranscription(client, message);
     handledTextToSpeech(client, message);
+
+    new Draco(client, message).handleMessage();
   });
 }
