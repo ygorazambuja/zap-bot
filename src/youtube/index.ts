@@ -21,6 +21,7 @@ export async function handleDownloadVideo(client: Client, message: Message) {
       );
       unlinkSync(`${timestamp}.mp4`);
     } catch (error) {
+      await client.sendText(message.chatId, "Erro ao Baixar o Video ");
       console.error(error);
     }
   }
