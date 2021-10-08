@@ -5,10 +5,7 @@ export async function jaoPimpao(client: Client, message: Message) {
   if (message?.body?.startsWith("!joao")) {
     const n = Number(message.body.substring(6));
     // for (let i = 0; i < n && i < 10; i++) {
-    await client.sendText(
-      message.chatId,
-      "João Gordo Nojento !\n\n para de spam tchesco otarios"
-    );
+    await client.sendText(message.chatId, "João Gordo Nojento !\n\n");
     // }
   }
 }
