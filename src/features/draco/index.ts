@@ -19,11 +19,11 @@ export class Draco extends IClientMessageResponse {
   }
 
   async handleMessage() {
-    if (this.message.body.startsWith("!draco")) {
-      const draco = await this.fetchDracoUSDRate();
+    if (this.message.body?.startsWith("!draco")) {
+      const { USD } = await this.fetchDracoUSDRate();
       await this.client.sendText(
         this.message.chatId,
-        `Cotação do DRACO em Dolar: ${draco.USD}`
+        `Cotação do DRACO em Dolar: ${USD}`
       );
     }
   }
