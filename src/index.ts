@@ -5,6 +5,7 @@ import { handleAudioTranscription } from "./speechToText";
 import { imgToSticker, saveStickersAsWebp, sendGifAsSticker } from "./sticker";
 import { handledTextToSpeech } from "./textToSpeech";
 import { searchTorrent } from "./torrent";
+import { searchCorreio } from "./features/correio";
 
 import { commands } from "./utils";
 import { handleDownloadMp3, handleDownloadVideo } from "./youtube";
@@ -28,6 +29,7 @@ function start(client: Client) {
     handleDownloadMp3(client, message);
     handleAudioTranscription(client, message);
     handledTextToSpeech(client, message);
+    searchCorreio(client,message);
 
     new Draco(client, message).handleMessage();
   });
