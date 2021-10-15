@@ -16,6 +16,7 @@
 - [x] - Integração com Google Cloud Speech to Text
 - [x] - Converter Texto para Audio
 - [x] - Converter Audio para Texto
+- [x] - Rastrear codigos dos correios
 
 ---
 
@@ -32,7 +33,8 @@
 
 **!sticker** na legenda da foto para converter a imagem em sticker
 
-**!torrent** busca: busca qualquer coisa de torrent _(teste)_
+**!torrent** busca: busca qualquer coisa de torrent
+
 **!paixao**: manda um sticker do paixão
 
 **!gif** url: converte uma gif da internet para sticker animado
@@ -46,5 +48,7 @@
 **!sousurdo** como resposta ao Audio para Transformar em Texto
 
 **!naoseiler** como resposta ao Texto para Transformar em Audio
+
+**!correio** busca: busca codigo dos correios
 
 ---

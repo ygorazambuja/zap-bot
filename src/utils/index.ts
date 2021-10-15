@@ -14,7 +14,8 @@ export async function commands(client: Client, message: Message) {
         "*!audio* youtubeLink: converte videos do youtube para MP3\n\n" +
         "*!video* youtubeLink: baixa e envia video do YouTube\n\n" +
         "*!sousurdo* como resposta ao Audio para Transformar em Texto\n\n" +
-        "*!naoseiler* como resposta ao Texto para Transformar em Audio"
+        "*!naoseiler* como resposta ao Texto para Transformar em Audio\n\n" +
+        "*!correio** busca: busca codigo dos correios"
     );
   }
 }
