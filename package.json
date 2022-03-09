@@ -21,7 +21,8 @@
   },
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only ./src",
-    "start": "ts-node-dev ./src"
+    "start": "node ./dist",
+    "build": "tsc -p ."
   },
   "devDependencies": {
     "@types/torrent-search-api": "^2.0.0",

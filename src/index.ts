@@ -10,11 +10,14 @@ import { searchCorreio } from "./features/correio";
 import { commands } from "./utils";
 import { handleDownloadMp3, handleDownloadVideo } from "./youtube";
 
+import { join } from "path";
+
 create({
   hostNotificationLang: NotificationLanguage.PTBR,
   multiDevice: true,
   useChrome: true,
   executablePath: "/usr/bin/google-chrome",
+  sessionDataPath: join(__dirname, ".."),
 })
   .then((client) => start(client))
   .catch((err) => console.error(err));
