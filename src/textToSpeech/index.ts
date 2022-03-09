@@ -9,11 +9,11 @@ type ISynthesizeSpeechRequest =
 
 export async function handledTextToSpeech(client: Client, message: Message) {
   if (message?.body?.startsWith("!naoseiler")) {
+    console.log("[*] Start handleTextToSpeech");
     try {
       const timestamp = new Date().getTime();
-      const messageContent = await client.getMessageById(message.quotedMsg.id);
 
-      await convertTextToSpeech(messageContent.body, timestamp);
+      await convertTextToSpeech(message.quotedMsg.text, timestamp);
       await client.sendAudio(message.chatId, `${timestamp}.mp3`);
     } catch (error) {
       console.error(error);
@@ -22,6 +22,7 @@ export async function handledTextToSpeech(client: Client, message: Message) {
 }
 
 export async function convertTextToSpeech(text: string, timestamp: number) {
+  console.log("[*] Start convertTextToSpeech");
   const client = new textToSpeech.TextToSpeechClient();
 
   const request: ISynthesizeSpeechRequest = {

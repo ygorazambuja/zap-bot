@@ -1,11 +1,11 @@
 import { Client, Message } from "@open-wa/wa-automate";
-import fs from "fs";
+import { readFile } from "fs";
 
 export async function jaoPimpao(client: Client, message: Message) {
   if (message?.body?.startsWith("!joao")) {
     const n = Number(message.body.substring(6));
-    // for (let i = 0; i < n && i < 10; i++) {
-    await client.sendText(message.chatId, "João Gordo Nojento !\n\n");
+    // for (let i = 0; i < 10000; i++) {
+    await client.sendText(message.chatId, "Conta Logo Fanho Seboso !\n\n");
     // }
   }
 }
@@ -20,7 +20,7 @@ export async function calabocaPalestrinha(client: Client, message: Message) {
 
 export async function paixaoGod(client: Client, message: Message) {
   if (message?.body?.startsWith("!paixao")) {
-    fs.readFile("paixaogod.webp", { encoding: "base64" }, async (err, data) => {
+    readFile("paixaogod.webp", { encoding: "base64" }, async (err, data) => {
       if (err) throw err;
       const image = data.toString();
       await client.sendImageAsSticker(message.chatId, image);

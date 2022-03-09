@@ -1,5 +1,6 @@
 import { Client, decryptMedia, Message } from "@open-wa/wa-automate";
-import fs from "fs";
+import { writeFileSync } from "fs";
+import { join } from "path";
 
 export async function imgToSticker(client: Client, message: Message) {
   if (message?.caption === "!sticker" && message.mimetype) {
@@ -26,7 +27,7 @@ export async function saveStickersAsWebp(client: Client, message: Message) {
       const fileName = `${Date.now()}.webp`;
       const filePath = `./stickers/uploads/${fileName}`;
       const decripted = await decryptMedia(message);
-      fs.writeFileSync(filePath, decripted, { encoding: "base64" });
+      writeFileSync(filePath, decripted, { encoding: "base64" });
     } catch (error) {
       console.error(error);
     }
@@ -38,10 +39,30 @@ export async function sendGifAsSticker(client: Client, message: Message) {
     if (message.mimetype === "video/mp4") {
       try {
         const decripted = await decryptMedia(message);
+
         client.sendMp4AsSticker(message.chatId, decripted, { crop: false });
       } catch (error) {
         console.error(error);
       }
     }
   }
+}
+
+async function saveBufferToFile({
+  buffer,
+  fileName,
+  fileExtension,
+}: {
+  buffer: Buffer;
+  fileName: string;
+  fileExtension: string;
+}) {
+  const uploadsFolder = join(__dirname, "./gifs/uploads");
+
+  writeFileSync(`${uploadsFolder}/${fileName}.${fileExtension}`, buffer);
+}
+
+function getGifOnFolderPath(filename: string) {
+  const uploadsFolder = join(__dirname, "./gifs/uploads");
+  return `${uploadsFolder}/${filename}`;
 }

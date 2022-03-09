@@ -12,8 +12,12 @@ import { handleDownloadMp3, handleDownloadVideo } from "./youtube";
 
 create({
   hostNotificationLang: NotificationLanguage.PTBR,
+  multiDevice: true,
   useChrome: true,
-}).then((client) => start(client));
+  executablePath: "/usr/bin/google-chrome",
+})
+  .then((client) => start(client))
+  .catch((err) => console.error(err));
 
 function start(client: Client) {
   client.onAnyMessage(async (message) => {
@@ -29,7 +33,7 @@ function start(client: Client) {
     handleDownloadMp3(client, message);
     handleAudioTranscription(client, message);
     handledTextToSpeech(client, message);
-    searchCorreio(client,message);
+    searchCorreio(client, message);
 
     new Draco(client, message).handleMessage();
   });

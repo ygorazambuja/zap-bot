@@ -7,11 +7,13 @@ stickers/*
 **.data.json
 **.node-persist**
 # end managed by open-wa
-
 *.mp4
 *.aac
 *.mp3
 *.opus
 *.wav
-
 zipzop-bot-79fe06c2a026.json
+
+# managed by open-wa
+**_IGNORE_**
+# end managed by open-wa

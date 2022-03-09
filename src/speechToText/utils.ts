@@ -1,17 +1,21 @@
 import speech from "@google-cloud/speech";
 import { google } from "@google-cloud/speech/build/protos/protos";
-import fs from "fs";
+import { readFileSync } from "fs";
 import { convertOpusToWavUsingFFMPEG } from "../utils/ffmpeg";
+
+import { resolve } from "path";
 
 export async function getAudioTranscription(timestamp: number) {
   const speechClient = new speech.SpeechClient();
 
   const languageCode = "pt-BR";
 
-  await convertOpusToWavUsingFFMPEG(`${timestamp}.opus`);
+  const opusPath = resolve(`${timestamp}.opus`);
+
+  await convertOpusToWavUsingFFMPEG(opusPath);
 
   const audio: google.cloud.speech.v1.IRecognitionAudio = {
-    content: fs.readFileSync(`${timestamp}.wav`),
+    content: readFileSync(`${timestamp}.wav`),
   };
 
   const config: google.cloud.speech.v1.IRecognitionConfig = {
