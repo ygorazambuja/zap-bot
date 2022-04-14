@@ -16,7 +16,7 @@ create({
   hostNotificationLang: NotificationLanguage.PTBR,
   multiDevice: true,
   useChrome: true,
-  executablePath: "/usr/bin/google-chrome",
+  // executablePath: "/usr/bin/google-chrome",
   sessionDataPath: join(__dirname, ".."),
 })
   .then((client) => start(client))

@@ -10,9 +10,9 @@
     "url": "https://github.com/ygorazambuja/zap-bot"
   },
   "dependencies": {
-    "@google-cloud/speech": "^4.8.1",
+    "@google-cloud/speech": "^4.10.1",
     "@google-cloud/text-to-speech": "^3.3.1",
-    "@open-wa/wa-automate": "^4.33.1",
+    "@open-wa/wa-automate": "^4.35.6",
     "axios": "^0.26.1",
     "ffmpeg-static": "^5.0.0",
     "mime-types": "^2.1.35",

@@ -5,8 +5,10 @@ services:
     container_name: zipzop
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: DockerfileDevelop
     ports:
       - "8080:8080"
     environment:
       - GOOGLE_APPLICATION_CREDENTIALS=./zipzop-google-data.json
+    volumes:
+      - .:/app
